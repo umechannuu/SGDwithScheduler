@@ -109,6 +109,7 @@ def test(epoch):
         'accuracy': acc
     })
 
+# get fullgradnorm
 def get_full_grad_list(net, train_set, optimizer):
     parameters=[p for p in net.parameters()]
     batch_size=128
@@ -141,12 +142,13 @@ def get_full_grad_list(net, train_set, optimizer):
 def lr_lambda(steps):
     return 1 / math.sqrt(steps+1) 
 
+# warmup by steps
 def linear_lr_lambda(steps):
     if steps < warmup_steps:
         return (steps + 1) / warmup_steps
     else:
         return 1 - ((steps - warmup_steps) / (total_steps - warmup_steps))
-
+# warmup by epochs
 def warmup_lr_lambda1(epoch):
     if epoch < args.warmup_epochs:
         return (epoch + 1) / args.warmup_epochs
@@ -181,7 +183,7 @@ if __name__ == '__main__':
 
     
 
-
+    # wandb setup
     wandb_project_name = "WRITE ME"
     wandb_exp_name = f"CIFAR100,{args.method},b={args.batchsize},lr={args.lr},warmup={args.warmup_epochs},p={args.power}"
     wandb.init(config = args,
