@@ -18,3 +18,9 @@ mizing the expectation of the full gradient norm of the em-
 pirical loss. We also provide numerical results showing that
 linear and cosine-annealing learning rates are especially use-
 ful for training deep neural networks.
+
+# Usage
+please change method, lr, batchsize, epochs, models(ResNet18, WideResNet28-10), warmup_epochs or steps when train model by CIFAR100
+'''
+python cifar100.py --method constant --lr 0.01 --model ResNet18 --warmup_epochs 0 --batchsize 64 --epochs 200
+'''
