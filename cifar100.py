@@ -155,12 +155,6 @@ def warmup_lr_lambda1(epoch):
     else:
         return 1
     
-        
-
-def norm_work(norm_list, norm):
-    norm_list.append(norm)
-    average = sum(norm_list) / len(norm_list)
-    return average
 
 
 
